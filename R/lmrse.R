@@ -38,8 +38,35 @@ lmrse <- function(formula, cluster, data=NULL){
   y <- y[!rm,]
   x <- x[!rm,]
   
+  # Missing phenotypes
+  miss <- apply(is.na(y),2,sum)>0
+  y_c <- y[,miss==F]
+  y_nc <- y[,miss==T]
+  
   # Beta
-  b <- t(lm(y~x-1)$coef)
+  if(any(!miss)==T){
+    b_c <- t(lm(y_c~x-1)$coef)
+  }
+  if(any(miss)==T){
+    b_nc <- data.frame()
+    for(i in 1:ncol(y_nc)){
+      b_nc <- rbind(b_nc, t(fastLm(y_nc~x-1)$coef))
+    }
+    b_nc <- as.matrix(b_nc)
+  }
+  
+  # Combin betas
+  if(any(miss)==T & any(!miss)==T){
+    b <- rep(NA, ncol(y))
+    b[miss==F] <- b_c
+    b[miss==T] <- b_nc
+  }
+  if(any(miss)==F & any(!miss)==T){
+    b <- b_c
+  }
+  if(any(miss)==T & any(!miss)==F){
+    b <- b_nc
+  }
   rownames(b) <- colnames(y)
   colnames(b) <- colnames(x)
   
@@ -151,7 +178,9 @@ robustse <- function(y=y, x=x, cluster=cluster){
   y_nc <- y[,miss==T]
   
   # Robust SEs
-  robse_c <- robustseCpp(y_c, x, cluster)
+  if(any(!miss)==T){
+    robse_c <- robustseCpp(y_c, x, cluster)
+  }
   
   # Robust SEs for CpG sites with missing values
   if(any(miss)==T){
@@ -159,13 +188,16 @@ robustse <- function(y=y, x=x, cluster=cluster){
   }
   
   # Robust SEs
-  if(any(miss)==T){
+  if(any(miss)==T & any(!miss)==T){
     robse <- rep(NA, ncol(y))
     robse[miss==F] <- robse_c
     robse[miss==T] <- robse_nc
   }
-  else{
+  if(any(miss)==F & any(!miss)==T){
     robse <- robse_c
+  }
+  if(any(miss)==T & any(!miss)==F){
+    robse <- robse_nc
   }
   
   # Naming
