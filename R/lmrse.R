@@ -55,7 +55,7 @@ lmrse <- function(formula, cluster, data=NULL){
     b_nc <- as.matrix(b_nc)
   }
   
-  # Combin betas
+  # Combine betas
   if(any(miss)==T & any(!miss)==T){
     b <- rep(NA, ncol(y))
     b[miss==F] <- b_c
