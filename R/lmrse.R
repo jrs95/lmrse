@@ -50,7 +50,7 @@ lmrse <- function(formula, cluster, data=NULL){
   if(any(miss)==T){
     b_nc <- data.frame()
     for(j in 1:ncol(y_nc)){
-      b_nc <- rbind(b_nc, t(fastLm(y_nc[,j]~x-1)$coef))
+      b_nc <- rbind(b_nc, t(lm(y_nc[,j]~x-1)$coef))
     }
     b_nc <- as.matrix(b_nc)
   }
