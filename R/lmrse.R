@@ -40,8 +40,8 @@ lmrse <- function(formula, cluster, data=NULL){
   
   # Missing phenotypes
   miss <- apply(is.na(y),2,sum)>0
-  y_c <- y[,miss==F]
-  y_nc <- y[,miss==T]
+  y_c <- as.matrix(y[,miss==F])
+  y_nc <- as.matrix(y[,miss==T])
   
   # Beta
   if(any(!miss)==T){
@@ -174,8 +174,8 @@ robustse <- function(y=y, x=x, cluster=cluster){
   
   # Missing phenotypes
   miss <- apply(is.na(y),2,sum)>0
-  y_c <- y[,miss==F]
-  y_nc <- y[,miss==T]
+  y_c <- as.matrix(y[,miss==F])
+  y_nc <- as.matrix(y[,miss==T])
   
   # Robust SEs
   if(any(!miss)==T){
