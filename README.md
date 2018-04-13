@@ -10,7 +10,6 @@ This package is used to fit linear models with cluster robust standard errors ac
 3. install_github("jrs95/lmrse")
 4. library(lmrse)
 
-
 # Example
 \#\#\# Data  
 y <- rnorm(5000000)  
