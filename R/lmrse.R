@@ -120,11 +120,21 @@ print.summary.lmrse <- function(x, ...){
   cat("Call: lmrse")
   cat("\n\nNumber of markers:", nrow(x[[1]]))
   cat("\n\nCoefficients for the first 10 markers:\n")
-  printCoefmat(x$coef[1:10,])
-  cat("\nCluster robust standard errors for the first 10 markers:\n")
-  printCoefmat(x$se[1:10,])
-  cat("\nP-values for the first 10 markers:\n")
-  printCoefmat(x$p[1:10,])
+  if(nrow(x[[1]])>10){
+    cat("\n\nCoefficients for the first 10 markers:\n")
+    printCoefmat(x$coef[1:10,])
+    cat("\nCluster robust standard errors for the first 10 markers:\n")
+    printCoefmat(x$se[1:10,])
+    cat("\nP-values for the first 10 markers:\n")
+    printCoefmat(x$p[1:10,])
+  }else{
+    cat("\n\nCoefficients for the markers:\n")
+    printCoefmat(x$coef)
+    cat("\nCluster robust standard errors for the markers:\n")
+    printCoefmat(x$se)
+    cat("\nP-values for the markers:\n")
+    printCoefmat(x$p)    
+  }
 }
 
 #' Combine lmrse object into a results data.frame
