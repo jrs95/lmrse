@@ -34,12 +34,12 @@ lmrse <- function(formula, cluster, data=NULL){
   if(!is.null(data)){x <- model.matrix(formula, data)}else{x <- model.matrix(formula, mf)}
   
   # Missing covariates
-  rm <- apply(is.na(x),2,sum)>0
+  rm <- apply(is.na(x),1,sum)>0
   y <- y[!rm,]
   x <- x[!rm,]
   
   # Missing phenotypes
-  miss <- apply(is.na(y),2,sum)>0
+  miss <- apply(is.na(y),1,sum)>0
   y_c <- as.matrix(y[,miss==F])
   y_nc <- as.matrix(y[,miss==T])
   
