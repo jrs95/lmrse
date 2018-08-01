@@ -39,7 +39,7 @@ lmrse <- function(formula, cluster, data=NULL){
   x <- x[!rm,]
   
   # Missing phenotypes
-  miss <- apply(is.na(y),1,sum)>0
+  miss <- apply(is.na(y),2,sum)>0
   y_c <- as.matrix(y[,miss==F])
   y_nc <- as.matrix(y[,miss==T])
   
