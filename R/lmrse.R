@@ -37,6 +37,7 @@ lmrse <- function(formula, cluster, data=NULL){
   rm <- apply(is.na(x),1,sum)>0
   y <- y[!rm,]
   x <- x[!rm,]
+  cluster <- cluster[!rm,]
   
   # Missing phenotypes
   miss <- apply(is.na(y),2,sum)>0
