@@ -10,14 +10,20 @@
 lmrse(formula, cluster, data = NULL)
 }
 \arguments{
+\item{formula}{containing the methylation matrix as the response and the exposure and covariates as the dependent terms.}
+
 \item{cluster}{clustering variable.}
 
-\item{y}{matrix of methylation.}
-
-\item{x}{matrix of other covariates.}
+\item{data}{an optional data.frame which contains the covariates specified in the formula.}
 }
 \value{
 List of coefficients, SE and p-values matrices.
+
+\item{coef}{a matrix of regression coefficients.}
+
+\item{se}{a matrix of standard errors.}
+  
+\item{p}{a matrix of p-values.}
 }
 \description{
 lmrse fits a linear model with cluster robust standard errors for all markers (e.g. CpG sites of DNA methylation).
