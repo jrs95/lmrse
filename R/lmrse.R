@@ -53,6 +53,7 @@ lmrse <- function(formula, cluster, data=NULL){
 
   # Missing phenotypes
   miss <- apply(is.na(y),2,any)
+  if(ncol(y)!=length(miss)) stop("the number of columns of the methylation matrix is not equal to the length of the missing value variable")
   y_c <- as.matrix(y[,miss==F])
   y_nc <- as.matrix(y[,miss==T])
   
@@ -196,7 +197,8 @@ robustse <- function(y=y, x=x, cluster=cluster){
   cluster <- as.numeric(factor(cluster)); cluster <- cluster - 1; cluster <- as.integer(cluster)
   
   # Missing phenotypes
-  miss <- apply(is.na(y),2,sum)>0
+  miss <- apply(is.na(y),2,any)
+  if(ncol(y)!=length(miss)) stop("the number of columns of the methylation matrix is not equal to the length of the missing value variable")
   y_c <- as.matrix(y[,miss==F])
   y_nc <- as.matrix(y[,miss==T])
   
