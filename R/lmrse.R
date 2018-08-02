@@ -7,10 +7,13 @@
 #' @importFrom Rcpp evalCpp
 #' @useDynLib lmrse
 #' @aliases lmrse lmrse-package
-#' @param y matrix of methylation.
-#' @param x matrix of other covariates.
+#' @param formula containing the methylation matrix as the response and the exposure and covariates as the dependent terms.
 #' @param cluster clustering variable.
+#' @param data an optional data.frame which contains the covariates specified in the formula.
 #' @return List of coefficients, SE and p-values matrices.
+#' @return \item{coef}{a matrix of regression coefficients}
+#' @return \item{se}{a matrix of standard errors}
+#' @return \item{p}{a matrix of p-values}
 #' @examples
 #' ### Data
 #' y <- rnorm(5000000)
@@ -33,14 +36,23 @@ lmrse <- function(formula, cluster, data=NULL){
   y <- model.response(mf, "numeric")
   if(!is.null(data)){x <- model.matrix(formula, data)}else{x <- model.matrix(formula, mf)}
   
+  # Error messages
+  if(nrow(y)!=nrow(x)) stop("the number of rows in the methylation matrix is not equal to the number of rows in the covariates")
+  if(nrow(y)!=length(cluster)) stop("the number of rows of the methylation matrix is not equal to the length of the clustering variable")
+  
   # Missing covariates
-  rm <- apply(is.na(x),1,sum)>0
+  rm <- apply(is.na(x),1,any)
+  if(nrow(x)!=length(rm)) stop("the number of rows of the covairates is not equal to the length of the missing value variable")
   y <- y[!rm,]
   x <- x[!rm,]
   cluster <- cluster[!rm]
   
+  # Error messages
+  if(nrow(y)!=nrow(x)) stop("the number of rows in the methylation matrix is not equal to the number of rows in the covariates")
+  if(nrow(y)!=length(cluster)) stop("the number of rows of the methylation matrix is not equal to the length of the clustering variable")
+
   # Missing phenotypes
-  miss <- apply(is.na(y),2,sum)>0
+  miss <- apply(is.na(y),2,any)
   y_c <- as.matrix(y[,miss==F])
   y_nc <- as.matrix(y[,miss==T])
   
