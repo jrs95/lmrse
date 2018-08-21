@@ -317,10 +317,11 @@ robustseR <- function(y=NULL, x=NULL, cluster=cluster){
   n <- ncol(y)
   robse <- data.frame()
   for(j in 1:n){
-    d <- na.omit(data.frame(x,y=y[,j],cluster))
-    yj <- d$y
-    xj <- as.matrix(d[,-c(1,(ncol(d)-1),(ncol(d)))])
-    clusterj <- d$cluster
+    yj <- y[,j]
+    miss <- is.na(yj)
+    yj <- yj[!miss]
+    x <- x[!miss,]
+    clusterj <- cluster[!miss]
     mod <- lm(yj~xj)
     se <- sand_se(mod, clusterj)
     robse <- rbind(robse,se)
