@@ -39,10 +39,11 @@ lmrse <- function(formula, cluster, data=NULL){
   # Error messages
   if(nrow(y)!=nrow(x)) stop("the number of rows in the methylation matrix is not equal to the number of rows in the covariates")
   if(nrow(y)!=length(cluster)) stop("the number of rows of the methylation matrix is not equal to the length of the clustering variable")
+  if(any(is.na(cluster))) stop("there are missing values in the clustering variable")
   
   # Missing covariates
   rm <- apply(is.na(x),1,any)
-  if(nrow(x)!=length(rm)) stop("the number of rows of the covairates is not equal to the length of the missing value variable")
+  if(nrow(x)!=length(rm)) stop("the number of rows of the covariates is not equal to the length of the missing value variable")
   y <- y[!rm,]
   x <- x[!rm,]
   cluster <- cluster[!rm]
