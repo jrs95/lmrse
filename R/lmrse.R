@@ -192,7 +192,7 @@ coerce.lmrse <- function(x) {
 #' @author James R Staley <js16174@bristol.ac.uk>
 #' @export
 
-robustse <- function(y=y, x=x, cluster=cluster){
+robustse <- function(y, x, cluster){
   
   # Cluster variable
   cluster <- as.numeric(factor(cluster)); cluster <- cluster - 1; cluster <- as.integer(cluster)
@@ -258,7 +258,7 @@ robustse <- function(y=y, x=x, cluster=cluster){
 #' @author James R Staley <js16174@bristol.ac.uk>
 #' @export
 
-robustseCpp <- function(y=y, x=x, cluster=cluster){
+robustseCpp <- function(y, x, cluster){
   
   # Cluster variable
   c <- model.matrix(~factor(cluster))[,-1]; colnames(c) <- NULL; c <- cbind(0,c); c[rowSums(c)==0,1] <- 1
@@ -312,7 +312,7 @@ robustseCpp <- function(y=y, x=x, cluster=cluster){
 #' @author James R Staley <js16174@bristol.ac.uk>
 #' @export
 
-robustseR <- function(y=NULL, x=NULL, cluster=cluster){
+robustseR <- function(y, x, cluster){
   
   # Loop linear regressions and sandwich variance covariances
   n <- ncol(y)
