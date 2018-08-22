@@ -44,8 +44,8 @@ lmrse <- function(formula, cluster, data=NULL){
   # Missing covariates
   rm <- apply(is.na(x),1,any)
   if(nrow(x)!=length(rm)) stop("the number of rows of the covariates is not equal to the length of the missing value variable")
-  y <- y[!rm,]
-  x <- x[!rm,]
+  y <- as.matrix(y[!rm,])
+  x <- as.matrix(x[!rm,])
   cluster <- cluster[!rm]
   
   # Error messages
@@ -320,10 +320,13 @@ robustseR <- function(y, x, cluster){
   for(j in 1:n){
     yj <- y[,j]
     miss <- is.na(yj)
+    if(length(yj)!=length(miss)) stop("the number of rows in the methylation matrix is not equal to the length of the missing variable")
+    if(nrow(x)!=length(miss)) stop("the number of rows in the covariate matrix is not equal to the length of the missing variable")
+    if(length(cluster)!=length(miss)) stop("the cluster variable is not equal to the length of the missing variable")
     yj <- yj[!miss]
-    x <- x[!miss,]
+    xj <- as.matrix(x[!miss,])
     clusterj <- cluster[!miss]
-    mod <- lm(yj~xj)
+    mod <- lm(yj~xj-1)
     se <- sand_se(mod, clusterj)
     robse <- rbind(robse,se)
   }
