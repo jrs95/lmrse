@@ -35,6 +35,8 @@ lmrse <- function(formula, cluster, data=NULL){
   if(!is.null(data)){mf <- model.frame(formula, data, na.action=NULL)}else{mf <- model.frame(formula, na.action=NULL)}
   y <- model.response(mf, "numeric")
   if(!is.null(data)){x <- model.matrix(formula, data)}else{x <- model.matrix(formula, mf)}
+  names_y <- colnames(y)
+  names_x <- colnames(x)
   
   # Error messages
   if(nrow(y)!=nrow(x)) stop("the number of rows in the methylation matrix is not equal to the number of rows in the covariates")
@@ -82,13 +84,13 @@ lmrse <- function(formula, cluster, data=NULL){
   if(any(miss)==T & any(!miss)==F){
     b <- b_nc
   }
-  rownames(b) <- colnames(y)
-  colnames(b) <- colnames(x)
+  rownames(b) <- names_y
+  colnames(b) <- names_x
   
   # Robust SE
   se <- robustse(y, x, cluster)
-  rownames(se) <- colnames(y)
-  colnames(se) <- colnames(x)
+  rownames(se) <- names_y
+  colnames(se) <- names_x
   
   # P-value
   p <- 2*pnorm(abs(b/se), lower.tail=F)
