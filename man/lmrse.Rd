@@ -32,7 +32,7 @@ lmrse fits a linear model with cluster robust standard errors for all markers (e
 ### Data
 y <- rnorm(5000000)
 y <- matrix(y, ncol=1000)
-colnames(y) <- paste0("var",1:1000)
+colnames(y) <- paste0("pheno",1:1000)
 x <- rnorm(5000)
 cluster <- rep(1:1000,5)
 c1 <- rbinom(5000,1,0.5)
