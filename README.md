@@ -13,12 +13,12 @@ This package is used to fit linear models with cluster robust standard errors ac
 # Example
 \#\#\# Data  
 y <- rnorm(5000000)  
-y <- matrix(y, ncol=1000)  
+y <- matrix(y, ncol=1000) # a matrix of phenotypes with rows of idnvdiuals and columns as phenotypes (e.g. rows of samples and coloumns of CpG sites)   
 colnames(y) <- paste0("var",1:1000)  
-x <- rnorm(5000)  
-cluster <- rep(1:1000,5)  
-c1 <- rbinom(5000,1,0.5)  
-c2 <- rnorm(5000)   
+x <- rnorm(5000) # a vector of exposure   
+cluster <- rep(1:1000,5) # cluster variable   
+c1 <- rbinom(5000,1,0.5) # covariate 1  
+c2 <- rnorm(5000) # covariate 2    
 
 \#\#\# Analyses  
 res <- lmrse(y ~ x + c1 + c2, cluster=cluster)  
