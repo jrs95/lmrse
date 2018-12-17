@@ -39,6 +39,7 @@ lmrse <- function(formula, cluster, data=NULL){
   names_x <- colnames(x)
   
   # Error messages
+  if(class(y)!="matrix") stop("the outcome should be a methylation matrix with at least two columns")
   if(nrow(y)!=nrow(x)) stop("the number of rows in the methylation matrix is not equal to the number of rows in the covariates")
   if(nrow(y)!=length(cluster)) stop("the number of rows of the methylation matrix is not equal to the length of the clustering variable")
   if(any(is.na(cluster))) stop("there are missing values in the clustering variable")
