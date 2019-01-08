@@ -13,7 +13,7 @@ This package is used to fit linear models with cluster robust standard errors ac
 # Example
 \#\#\# Data  
 y <- rnorm(5000000)  
-y <- matrix(y, ncol=1000) # a matrix of phenotypes with rows of individuals and columns of phenotypes (e.g. rows of samples and coloumns of CpG sites)   
+y <- matrix(y, ncol=1000) # a matrix of phenotypes with rows of individuals and columns of phenotypes (e.g. rows of samples and columns of CpG sites)   
 colnames(y) <- paste0("pheno",1:1000)  
 x <- rnorm(5000) # a vector of exposure   
 cluster <- rep(1:1000,5) # cluster variable   
