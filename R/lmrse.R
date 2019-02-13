@@ -64,7 +64,7 @@ lmrse <- function(formula, cluster, data=NULL){
   # Beta
   if(any(!miss)==T){
     b_c <- t(lm(y_c~x-1)$coef)
-    if(is.na(b_c)) stop("there are missing values in the regression coefficients")
+    if(any(is.na(b_c))) stop("there are missing values in the regression coefficients")
   }
   if(any(miss)==T){
     b_nc <- data.frame()
@@ -72,7 +72,7 @@ lmrse <- function(formula, cluster, data=NULL){
       b_nc <- rbind(b_nc, t(lm(y_nc[,j]~x-1)$coef))
     }
     b_nc <- as.matrix(b_nc)
-    if(is.na(b_nc)) stop("there are missing values in the regression coefficients")
+    if(any(is.na(b_nc))) stop("there are missing values in the regression coefficients")
   }
   
   # Combine betas
