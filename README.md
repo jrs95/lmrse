@@ -26,4 +26,4 @@ summary(res)
 results <- coerce.lmrse(res)
 
 ## Citation
-Staley JR et al. Longitudinal analysis strategies for modelling epigenetic trajectories. Int J Epidemiol 2018;47(2):516-525.
+Staley JR et al. Longitudinal analysis strategies for modelling epigenetic trajectories. Int J Epidemiol 2018;47(2):516-525. . Link: https://academic.oup.com/ije/article-lookup/doi/10.1093/ije/dyy012
