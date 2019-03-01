@@ -13,5 +13,5 @@ coerce.lmrse(x)
 coerce method for class "lmrse", where coefficients, standard errors and p-values are consecutive columns for each covariable in the model.
 }
 \author{
-James R Staley <js16174@bristol.ac.uk>
+James R Staley <james.staley@bristol.ac.uk>
 }
