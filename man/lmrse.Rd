@@ -31,7 +31,7 @@ lmrse fits a linear model with cluster robust standard errors for all markers (e
 \examples{
 ### Data
 y <- rnorm(5000000)
-y <- matrix(y, ncol=1000)
+y <- matrix(y, ncol=1000) # a matrix of phenotypes with rows of individuals and columns of phenotypes (e.g. rows of samples and columns of CpG sites)
 colnames(y) <- paste0("pheno",1:1000)
 x <- rnorm(5000)
 cluster <- rep(1:1000,5)
@@ -42,5 +42,5 @@ c2 <- rnorm(5000)
 res <- lmrse(y ~ x + c1 + c2, cluster=cluster)
 }
 \author{
-James R Staley <js16174@bristol.ac.uk>
+James R Staley <james.staley@bristol.ac.uk>
 }
