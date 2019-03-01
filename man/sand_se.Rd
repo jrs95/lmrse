@@ -18,5 +18,5 @@ A vector of robust standard errors for the covariates including the intercept.
 sand_se fits cluster robust standard errors using a sandwich estimator.
 }
 \author{
-James R Staley <js16174@bristol.ac.uk>
+James R Staley <james.staley@bristol.ac.uk>
 }
