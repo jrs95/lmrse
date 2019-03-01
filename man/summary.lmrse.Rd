@@ -13,5 +13,5 @@
 summary method for class "lmrse".
 }
 \author{
-James R Staley <js16174@bristol.ac.uk>
+James R Staley <james.staley@bristol.ac.uk>
 }
