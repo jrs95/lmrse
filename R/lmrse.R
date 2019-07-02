@@ -78,8 +78,8 @@ lmrse <- function(formula, cluster, data=NULL){
   # Combine betas
   if(any(miss)==T & any(!miss)==T){
     b <- matrix(NA, nrow=ncol(y), ncol=ncol(x))
-    b[miss==F,,drop=F] <- b_c
-    b[miss==T,,drop=F] <- b_nc
+    b[miss==F,] <- b_c
+    b[miss==T,] <- b_nc
   }
   if(any(miss)==F & any(!miss)==T){
     b <- b_c
@@ -221,8 +221,8 @@ robustse <- function(y, x, cluster){
   # Robust SEs
   if(any(miss)==T & any(!miss)==T){
     robse <- matrix(NA, nrow=ncol(y), ncol=ncol(x))
-    robse[miss==F,,drop=F] <- robse_c
-    robse[miss==T,,drop=F] <- robse_nc
+    robse[miss==F,] <- robse_c
+    robse[miss==T,] <- robse_nc
   }
   if(any(miss)==F & any(!miss)==T){
     robse <- robse_c
