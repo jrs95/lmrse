@@ -34,7 +34,7 @@ lmrse <- function(formula, cluster, data=NULL){
   # Formulae
   if(!is.null(data)){mf <- model.frame(formula, data, na.action=NULL)}else{mf <- model.frame(formula, na.action=NULL)}
   y <- model.response(mf, "numeric")
-  if(!is.null(data)){x <- model.matrix(formula, data)}else{x <- model.matrix(formula, mf)}
+  x <- model.matrix(formula, mf)
   names_y <- colnames(y)
   names_x <- colnames(x)
   
