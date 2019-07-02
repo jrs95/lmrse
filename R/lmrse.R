@@ -47,8 +47,8 @@ lmrse <- function(formula, cluster, data=NULL){
   # Missing covariates
   rm <- apply(is.na(x),1,any)
   if(nrow(x)!=length(rm)) stop("the number of rows of the covariates is not equal to the length of the missing value variable")
-  y <- as.matrix(y[!rm,])
-  x <- as.matrix(x[!rm,])
+  y <- as.matrix(y[!rm,,drop=F])
+  x <- as.matrix(x[!rm,,drop=F])
   cluster <- cluster[!rm]
   
   # Error messages
@@ -58,8 +58,8 @@ lmrse <- function(formula, cluster, data=NULL){
   # Missing phenotypes
   miss <- apply(is.na(y),2,any)
   if(ncol(y)!=length(miss)) stop("the number of columns of the methylation matrix is not equal to the length of the missing value variable")
-  y_c <- as.matrix(y[,miss==F])
-  y_nc <- as.matrix(y[,miss==T])
+  y_c <- as.matrix(y[,miss==F,drop=F])
+  y_nc <- as.matrix(y[,miss==T,drop=F])
   
   # Beta
   if(any(!miss)==T){
@@ -78,8 +78,8 @@ lmrse <- function(formula, cluster, data=NULL){
   # Combine betas
   if(any(miss)==T & any(!miss)==T){
     b <- matrix(NA, nrow=ncol(y), ncol=ncol(x))
-    b[miss==F,] <- b_c
-    b[miss==T,] <- b_nc
+    b[miss==F,,drop=F] <- b_c
+    b[miss==T,,drop=F] <- b_nc
   }
   if(any(miss)==F & any(!miss)==T){
     b <- b_c
@@ -205,8 +205,8 @@ robustse <- function(y, x, cluster){
   # Missing phenotypes
   miss <- apply(is.na(y),2,any)
   if(ncol(y)!=length(miss)) stop("the number of columns of the methylation matrix is not equal to the length of the missing value variable")
-  y_c <- as.matrix(y[,miss==F])
-  y_nc <- as.matrix(y[,miss==T])
+  y_c <- as.matrix(y[,miss==F,drop=F])
+  y_nc <- as.matrix(y[,miss==T,drop=F])
   
   # Robust SEs
   if(any(!miss)==T){
@@ -221,8 +221,8 @@ robustse <- function(y, x, cluster){
   # Robust SEs
   if(any(miss)==T & any(!miss)==T){
     robse <- matrix(NA, nrow=ncol(y), ncol=ncol(x))
-    robse[miss==F,] <- robse_c
-    robse[miss==T,] <- robse_nc
+    robse[miss==F,,drop=F] <- robse_c
+    robse[miss==T,,drop=F] <- robse_nc
   }
   if(any(miss)==F & any(!miss)==T){
     robse <- robse_c
@@ -329,7 +329,7 @@ robustseR <- function(y, x, cluster){
     if(nrow(x)!=length(miss)) stop("the number of rows in the covariate matrix is not equal to the length of the missing variable")
     if(length(cluster)!=length(miss)) stop("the cluster variable is not equal to the length of the missing variable")
     yj <- yj[!miss]
-    xj <- as.matrix(x[!miss,])
+    xj <- as.matrix(x[!miss,,drop=F])
     clusterj <- cluster[!miss]
     mod <- lm(yj~xj-1)
     se <- sand_se(mod, clusterj)
