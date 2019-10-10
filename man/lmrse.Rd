@@ -42,5 +42,5 @@ c2 <- rnorm(5000)
 res <- lmrse(y ~ x + c1 + c2, cluster=cluster)
 }
 \author{
-James R Staley <james.staley@bristol.ac.uk>
+James R Staley <jrstaley95@gmail.com>
 }
