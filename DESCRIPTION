@@ -3,7 +3,7 @@ Title: Longtiudinal analysis of high-dimensional data using linear regression wi
 Version: 2.0
 Date: 01-03-2019
 Author: James Staley
-Maintainer: James Staley <james.staley@bristol.ac.uk>
+Maintainer: James Staley <jrstaley95@gmail.com>
 Description: This package is used to assess longitudinal trajectories using linear regression with cluster robust standard errors across markers.
 Depends: R (>= 3.2.0), methods
 License: GPL (>= 2)
