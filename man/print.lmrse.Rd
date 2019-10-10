@@ -13,5 +13,5 @@
 print method for class "lmrse".
 }
 \author{
-James R Staley <james.staley@bristol.ac.uk>
+James R Staley <jrstaley95@gmail.com>
 }
