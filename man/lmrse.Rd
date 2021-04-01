@@ -10,7 +10,7 @@
 lmrse(formula, cluster, data = NULL)
 }
 \arguments{
-\item{formula}{containing the methylation matrix as the response and the exposure and covariates as the dependent terms.}
+\item{formula}{containing the marker matrix as the response and the exposure and covariates as the dependent terms.}
 
 \item{cluster}{clustering variable.}
 
