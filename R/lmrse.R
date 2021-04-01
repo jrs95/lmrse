@@ -7,7 +7,7 @@
 #' @importFrom Rcpp evalCpp
 #' @useDynLib lmrse
 #' @aliases lmrse lmrse-package
-#' @param formula containing the methylation matrix as the response and the exposure and covariates as the dependent terms.
+#' @param formula containing the marker matrix as the response and the exposure and covariates as the dependent terms.
 #' @param cluster clustering variable.
 #' @param data an optional data.frame which contains the covariates specified in the formula.
 #' @return List of coefficients, SE and p-values matrices.
@@ -39,9 +39,9 @@ lmrse <- function(formula, cluster, data=NULL){
   names_x <- colnames(x)
   
   # Error messages
-  if(class(y)[1]!="matrix") stop("the outcome should be a methylation matrix with at least two columns")
-  if(nrow(y)!=nrow(x)) stop("the number of rows in the methylation matrix is not equal to the number of rows in the covariates")
-  if(nrow(y)!=length(cluster)) stop("the number of rows of the methylation matrix is not equal to the length of the clustering variable")
+  if(class(y)[1]!="matrix") stop("the outcome should be a marker matrix with at least two columns")
+  if(nrow(y)!=nrow(x)) stop("the number of rows in the marker matrix is not equal to the number of rows in the covariates")
+  if(nrow(y)!=length(cluster)) stop("the number of rows of the marker matrix is not equal to the length of the clustering variable")
   if(any(is.na(cluster))) stop("there are missing values in the clustering variable")
   
   # Missing covariates
@@ -52,12 +52,12 @@ lmrse <- function(formula, cluster, data=NULL){
   cluster <- cluster[!rm]
   
   # Error messages
-  if(nrow(y)!=nrow(x)) stop("the number of rows in the methylation matrix is not equal to the number of rows in the covariates")
-  if(nrow(y)!=length(cluster)) stop("the number of rows of the methylation matrix is not equal to the length of the clustering variable")
+  if(nrow(y)!=nrow(x)) stop("the number of rows in the marker matrix is not equal to the number of rows in the covariates")
+  if(nrow(y)!=length(cluster)) stop("the number of rows of the marker matrix is not equal to the length of the clustering variable")
 
   # Missing phenotypes
   miss <- apply(is.na(y),2,any)
-  if(ncol(y)!=length(miss)) stop("the number of columns of the methylation matrix is not equal to the length of the missing value variable")
+  if(ncol(y)!=length(miss)) stop("the number of columns of the marker matrix is not equal to the length of the missing value variable")
   y_c <- as.matrix(y[,miss==F,drop=F])
   y_nc <- as.matrix(y[,miss==T,drop=F])
   
@@ -176,7 +176,7 @@ coerce.lmrse <- function(x) {
 #' Robust SE
 #'
 #' robustse fits cluster robust standard errors (with robusteCpp and/or robustseR) for longitudinal analyses across markers using standard linear regression.
-#' @param y matrix of methylation.
+#' @param y matrix of markers.
 #' @param x matrix of other covariates (including intercept).
 #' @param cluster clustering variable.
 #' @return A matrix of robust standard errors where the rows are the markers (e.g. CpG sites of DNA methylation) and the columns are the covariates including the intercept.
@@ -204,7 +204,7 @@ robustse <- function(y, x, cluster){
   
   # Missing phenotypes
   miss <- apply(is.na(y),2,any)
-  if(ncol(y)!=length(miss)) stop("the number of columns of the methylation matrix is not equal to the length of the missing value variable")
+  if(ncol(y)!=length(miss)) stop("the number of columns of the marker matrix is not equal to the length of the missing value variable")
   y_c <- as.matrix(y[,miss==F,drop=F])
   y_nc <- as.matrix(y[,miss==T,drop=F])
   
@@ -242,7 +242,7 @@ robustse <- function(y, x, cluster){
 #' Robust SE (C++)
 #'
 #' robustseCpp fits cluster robust standard errors (using C++Eigen) for longitudinal analyses across CpG sites using standard linear regression.
-#' @param y matrix of methylation.
+#' @param y matrix of markers.
 #' @param x matrix of other covariates (including intercept).
 #' @param cluster clustering variable.
 #' @return A matrix of robust standard errors where the rows are the CpGs and the columns are the covariates including the intercept.
@@ -296,7 +296,7 @@ robustseCpp <- function(y, x, cluster){
 #' Robust SE (R)
 #'
 #' robustseR fits cluster robust standard errors (using R) for longitudinal analyses across CpG sites using standard linear regression.
-#' @param y matrix of methylation.
+#' @param y matrix of markers.
 #' @param x matrix of other covariates (including intercept).
 #' @param cluster clustering variable.
 #' @return A matrix of robust standard errors where the rows are the CpGs and the columns are the covariates including the intercept.
@@ -325,7 +325,7 @@ robustseR <- function(y, x, cluster){
   for(j in 1:n){
     yj <- y[,j]
     miss <- is.na(yj)
-    if(length(yj)!=length(miss)) stop("the number of rows in the methylation matrix is not equal to the length of the missing variable")
+    if(length(yj)!=length(miss)) stop("the number of rows in the marker matrix is not equal to the length of the missing variable")
     if(nrow(x)!=length(miss)) stop("the number of rows in the covariate matrix is not equal to the length of the missing variable")
     if(length(cluster)!=length(miss)) stop("the cluster variable is not equal to the length of the missing variable")
     yj <- yj[!miss]
