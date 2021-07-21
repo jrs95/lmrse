@@ -40,6 +40,7 @@ lmrse <- function(formula, cluster, data=NULL){
   
   # Error messages
   if(class(y)[1]!="matrix") stop("the outcome should be a marker matrix with at least two columns")
+  if(ncol(y)<2) stop("the outcome should be a marker matrix with at least two columns")
   if(nrow(y)!=nrow(x)) stop("the number of rows in the marker matrix is not equal to the number of rows in the covariates")
   if(nrow(y)!=length(cluster)) stop("the number of rows of the marker matrix is not equal to the length of the clustering variable")
   if(any(is.na(cluster))) stop("there are missing values in the clustering variable")
