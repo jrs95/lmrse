@@ -20,7 +20,7 @@ y <- matrix(y, ncol = 1000) # a matrix of phenotypes with rows of individuals an
 colnames(y) <- paste0("pheno", 1:1000)
 x <- rnorm(5000) # a vector of exposure
 cluster <- rep(1:1000, 5) # cluster variable
-c1 <- rbinom(5000,1,0.5) # covariate 1
+c1 <- rbinom(5000, 1, 0.5) # covariate 1
 c2 <- rnorm(5000) # covariate 2
 
 ### Analyses  
