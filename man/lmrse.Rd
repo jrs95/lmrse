@@ -4,7 +4,7 @@
 \name{lmrse}
 \alias{lmrse}
 \alias{lmrse-package}
-\title{lmrse}
+\title{Linear regression model with cluster robust standard errors}
 \usage{
 lmrse(formula, cluster, data = NULL)
 }
@@ -27,8 +27,8 @@ List of coefficients, SE and p-values matrices
 \item{p}{a matrix of p-values}
 }
 \description{
-\code{lmrse} fits a linear model with cluster robust standard errors
-for all markers (e.g. CpG sites of DNA methylation).
+\code{lmrse} fits a linear regression model with cluster robust
+standard errors for all markers.
 }
 \examples{
 ## Data

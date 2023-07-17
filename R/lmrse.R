@@ -1,7 +1,7 @@
-#' @title lmrse
+#' @title Linear regression model with cluster robust standard errors
 #'
-#' @description `lmrse` fits a linear model with cluster robust standard errors
-#'   for all markers (e.g. CpG sites of DNA methylation).
+#' @description `lmrse` fits a linear regression model with cluster robust
+#'   standard errors for all markers.
 #'
 #' @docType package
 #'
@@ -182,7 +182,7 @@ print.lmrse <- function(x, ...) {
   cat("\n\n")
 }
 
-#' @title Summarising lmrse
+#' @title Summary of lmrse
 #'
 #' @description summary method for class `"lmrse"`.
 #'

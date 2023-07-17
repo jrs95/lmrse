@@ -9,10 +9,13 @@ remotes::install_github("jrs95/lmrse")
 ```
 
 ## Functions
-* `lmrse`: fits a linear model with cluster robust standard errors for all markers.  
+* `lmrse`: fits a linear regression model with cluster robust standard errors for all markers.  
 
 ## Example
 ```
+## Libraries
+library(lmrse)
+
 ## Data  
 y <- rnorm(5000000)
 y <- matrix(y, ncol = 1000) # a matrix of phenotypes (rows = individuals, columns = markers)

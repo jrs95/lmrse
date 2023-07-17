@@ -2,7 +2,7 @@
 % Please edit documentation in R/lmrse.R
 \name{summary.lmrse}
 \alias{summary.lmrse}
-\title{Summarising lmrse}
+\title{Summary of lmrse}
 \usage{
 \method{summary}{lmrse}(x, ...)
 }
