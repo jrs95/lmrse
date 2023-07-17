@@ -1,6 +1,6 @@
 # lmrse <img src='man/figures/logo.png' align="right" height="139"/>
 
-This package is used to fit linear models with cluster robust standard errors across high-dimensional phenotypes to assess change over time.  
+This package is used to fit linear regression models with cluster robust standard errors across high-dimensional phenotypes to assess change over time.  
 
 ## Installation
 ```
@@ -10,6 +10,7 @@ remotes::install_github("jrs95/lmrse")
 
 ## Functions
 * `lmrse`: fits a linear regression model with cluster robust standard errors for all markers.  
+* `coerce.lmrse`: coerces the `lmrse` results into a single `data.frame`.  
 
 ## Example
 ```
