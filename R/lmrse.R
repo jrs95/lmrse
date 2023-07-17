@@ -62,10 +62,15 @@ lmrse <- function(formula, cluster, data = NULL) {
   names_x <- colnames(x)
 
   # Error messages
-  if (class(y)[1] != "matrix")
+  if (class(y)[1] != "matrix" || ncol(y) < 2)
     stop("the outcome should be a marker matrix with at least two columns")
-  if (ncol(y) < 2)
-    stop("the outcome should be a marker matrix with at least two columns")
+  if (class(x)[1] != "matrix" || ncol(x) < 2)
+    stop(
+      "the covariates matrix should contain at least an intercept and an ",
+      "exposure"
+    )
+  if (!all(x[, 1] == 1))
+    stop("the first column of the covariates matrix should be the intercept")
   if (nrow(y) != nrow(x))
     stop(
       "the number of rows in the marker matrix is not equal to the number of ",
@@ -435,7 +440,7 @@ robustseCpp <- function(y, x, cluster) {
 #' @md
 robustseR <- function(y, x, cluster) {
 
-  # Linear regression and sandwich variance covariances for each marker
+  # Linear regression model and sandwich variance covariances for each marker
   n <- ncol(y)
   robse <- data.frame()
   for (j in seq_len(n)) {

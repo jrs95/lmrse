@@ -4,7 +4,7 @@ Version: 0.0.2
 Date: 17-07-2023
 Authors@R: c(
     person("James", "Staley", , "jrstaley95@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "00009-0001-9520-5011"))
+           comment = c(ORCID = "0009-0001-9520-5011"))
   )
 Description: Longtiudinal analysis of high-dimensional data using linear
     regression with clustered robust standard errors across markers.
