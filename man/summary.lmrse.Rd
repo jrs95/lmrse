@@ -2,16 +2,16 @@
 % Please edit documentation in R/lmrse.R
 \name{summary.lmrse}
 \alias{summary.lmrse}
-\title{Summarizing lmrse}
+\title{Summarising lmrse}
 \usage{
 \method{summary}{lmrse}(x, ...)
 }
 \arguments{
-\item{x}{an object of class "lmrse".}
+\item{x}{an object of class \code{"lmrse"}}
 }
 \description{
-summary method for class "lmrse".
+summary method for class \code{"lmrse"}.
 }
 \author{
-James R Staley <jrstaley95@gmail.com>
+James R Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
 }

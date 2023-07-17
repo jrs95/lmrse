@@ -1,15 +1,26 @@
 Package: lmrse
-Title: Longtiudinal analysis of high-dimensional data using linear regression with robust SE
-Version: 2.0
-Date: 01-03-2019
-Author: James Staley
-Maintainer: James Staley <jrstaley95@gmail.com>
-Description: This package is used to assess longitudinal trajectories using linear regression with cluster robust standard errors across markers.
-Depends: R (>= 3.2.0), methods
-License: GPL (>= 2)
-ByteCompile: TRUE
-LazyData: TRUE
+Title: Linear regression with clustered robust standard errors
+Version: 0.0.2
+Date: 17-07-2023
+Authors@R: c(
+    person("James", "Staley", , "jrstaley95@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "00009-0001-9520-5011"))
+  )
+Description: Longtiudinal analysis of high-dimensional data using linear
+    regression with clustered robust standard errors across markers.
+License: GPL-3
+URL: https://github.com/jrs95/lmrse, https://jrs95.github.io/lmrse/
+BugReports: https://github.com/jrs95/lmrse/issues
+Depends:
+    R (>= 3.4.0)
+Imports: 
+    Rcpp,
+    RcppEigen,
+    sandwich
+LinkingTo: 
+    Rcpp,
+    RcppEigen
 Encoding: UTF-8
-Imports: Rcpp, RcppEigen, sandwich
-LinkingTo: Rcpp, RcppEigen
-RoxygenNote: 6.0.1.9000
+ByteCompile: true
+LazyData: true
+RoxygenNote: 7.2.3

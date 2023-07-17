@@ -7,11 +7,13 @@
 coerce.lmrse(x)
 }
 \arguments{
-\item{x}{an object of class "lmrse".}
+\item{x}{an object of class "lmrse"}
 }
 \description{
-coerce method for class "lmrse", where coefficients, standard errors and p-values are consecutive columns for each covariable in the model.
+coerce method for class \code{"lmrse"}, where
+coefficients, standard errors and p-values are
+consecutive columns for each covariable in the model.
 }
 \author{
-James R Staley <jrstaley95@gmail.com>
+James R Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
 }

@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // robustseEigen
 NumericMatrix robustseEigen(NumericMatrix es, NumericMatrix xs, NumericMatrix cs, NumericMatrix xxs, NumericMatrix covs);
 RcppExport SEXP _lmrse_robustseEigen(SEXP esSEXP, SEXP xsSEXP, SEXP csSEXP, SEXP xxsSEXP, SEXP covsSEXP) {

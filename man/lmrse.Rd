@@ -4,43 +4,46 @@
 \name{lmrse}
 \alias{lmrse}
 \alias{lmrse-package}
-\alias{lmrse-package}
 \title{lmrse}
 \usage{
 lmrse(formula, cluster, data = NULL)
 }
 \arguments{
-\item{formula}{containing the marker matrix as the response and the exposure and covariates as the dependent terms.}
+\item{formula}{containing the marker matrix as the response and the exposure
+and covariates as the dependent terms}
 
-\item{cluster}{clustering variable.}
+\item{cluster}{clustering variable}
 
-\item{data}{an optional data.frame which contains the covariates specified in the formula.}
+\item{data}{an optional data.frame which contains the covariates specified
+in the formula}
 }
 \value{
-List of coefficients, SE and p-values matrices.
+List of coefficients, SE and p-values matrices
 
-\item{coef}{a matrix of regression coefficients.}
+\item{coef}{a matrix of regression coefficients}
 
-\item{se}{a matrix of standard errors.}
-  
-\item{p}{a matrix of p-values.}
+\item{se}{a matrix of standard errors}
+
+\item{p}{a matrix of p-values}
 }
 \description{
-lmrse fits a linear model with cluster robust standard errors for all markers (e.g. CpG sites of DNA methylation).
+\code{lmrse} fits a linear model with cluster robust standard errors
+for all markers (e.g. CpG sites of DNA methylation).
 }
 \examples{
-### Data
+## Data
 y <- rnorm(5000000)
-y <- matrix(y, ncol=1000) # a matrix of phenotypes with rows of individuals and columns of phenotypes (e.g. rows of samples and columns of CpG sites)
-colnames(y) <- paste0("pheno",1:1000)
+y <- matrix(y, ncol = 1000)
+colnames(y) <- paste0("var", 1:1000)
 x <- rnorm(5000)
-cluster <- rep(1:1000,5)
-c1 <- rbinom(5000,1,0.5)
+cluster <- rep(1:1000, 5)
+c1 <- rbinom(5000, 1, 0.5)
 c2 <- rnorm(5000)
 
-### Analyses
-res <- lmrse(y ~ x + c1 + c2, cluster=cluster)
+## Analyses
+res <- lmrse(y ~ x + c1 + c2, cluster = cluster)
+
 }
 \author{
-James R Staley <jrstaley95@gmail.com>
+James R Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
 }

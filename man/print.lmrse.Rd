@@ -7,11 +7,11 @@
 \method{print}{lmrse}(x, ...)
 }
 \arguments{
-\item{x}{an object of class "lmrse".}
+\item{x}{an object of class \code{"lmrse"}}
 }
 \description{
-print method for class "lmrse".
+print method for class \code{"lmrse"}.
 }
 \author{
-James R Staley <jrstaley95@gmail.com>
+James R Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
 }
