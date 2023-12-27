@@ -62,75 +62,87 @@ lmrse <- function(formula, cluster, data = NULL) {
   names_x <- colnames(x)
 
   # Error messages
-  if (class(y)[1] != "matrix" || ncol(y) < 2)
+  if (class(y)[1] != "matrix" || ncol(y) < 2) {
     stop("the outcome should be a marker matrix with at least two columns")
-  if (class(x)[1] != "matrix" || ncol(x) < 2)
+  }
+  if (class(x)[1] != "matrix" || ncol(x) < 2) {
     stop(
       "the covariates matrix should contain at least an intercept and an ",
       "exposure"
     )
-  if (!all(x[, 1] == 1))
+  }
+  if (!all(x[, 1] == 1)) {
     stop("the first column of the covariates matrix should be the intercept")
-  if (nrow(y) != nrow(x))
+  }
+  if (nrow(y) != nrow(x)) {
     stop(
       "the number of rows in the marker matrix is not equal to the number of ",
       "rows in the covariates"
     )
-  if (nrow(y) != length(cluster))
+  }
+  if (nrow(y) != length(cluster)) {
     stop(
       "the number of rows of the marker matrix is not equal to the length of ",
       "the clustering variable"
     )
-  if (any(is.na(cluster)))
+  }
+  if (any(is.na(cluster))) {
     stop("there are missing values in the clustering variable")
+  }
 
   # Missing covariates
   rm <- apply(is.na(x), 1, any)
-  if (nrow(x) != length(rm))
+  if (nrow(x) != length(rm)) {
     stop(
       "the number of rows of the covariates is not equal to the length of the ",
       "missing value variable"
     )
+  }
   y <- y[!rm, , drop = FALSE]
   x <- x[!rm, , drop = FALSE]
   cluster <- cluster[!rm]
 
   # Error messages
-  if (nrow(y) != nrow(x))
+  if (nrow(y) != nrow(x)) {
     stop(
       "the number of rows in the marker matrix is not equal to the number of ",
       "rows in the covariates"
     )
-  if (nrow(y) != length(cluster))
+  }
+  if (nrow(y) != length(cluster)) {
     stop(
       "the number of rows of the marker matrix is not equal to the length of ",
       "the clustering variable"
     )
+  }
 
   # Missing phenotypes
   miss <- apply(is.na(y), 2, any)
-  if (ncol(y) != length(miss))
+  if (ncol(y) != length(miss)) {
     stop(
       "the number of columns of the marker matrix is not equal to the length ",
       "of the missing value variable"
     )
+  }
   y_c <- y[, miss == FALSE, drop = FALSE]
   y_nc <- y[, miss == TRUE, drop = FALSE]
 
   # Beta
   if (any(!miss) == TRUE) {
     b_c <- t(lm(y_c ~ x - 1)$coef)
-    if (any(is.na(b_c)))
+    if (any(is.na(b_c))) {
       stop("there are missing values in the regression coefficients")
+    }
   }
   if (any(miss) == TRUE) {
     b_nc <- data.frame()
     for (j in seq_len(ncol(y_nc))) {
-      b_nc <- rbind(b_nc, t(lm(y_nc[, j] ~  x - 1)$coef))
+      b_nc <- rbind(b_nc, t(lm(y_nc[, j] ~ x - 1)$coef))
     }
     b_nc <- as.matrix(b_nc)
-    if (any(is.na(b_nc)))
+    if (any(is.na(b_nc))) {
       stop("there are missing values in the regression coefficients")
+    }
   }
 
   # Combine betas
@@ -298,7 +310,7 @@ coerce.lmrse <- function(x) {
 #' ## Data
 #' y <- rnorm(5000000)
 #' y <- matrix(y, ncol = 1000)
-#' colnames(y) <- paste0("var",1:1000)
+#' colnames(y) <- paste0("var", 1:1000)
 #' x <- rnorm(5000)
 #' cluster <- rep(1:1000, 5)
 #' covar <- cbind(rbinom(5000, 1, 0.5), rnorm(5000))
@@ -322,11 +334,12 @@ robustse <- function(y, x, cluster) {
 
   # Missing phenotypes
   miss <- apply(is.na(y), 2, any)
-  if (ncol(y) != length(miss))
+  if (ncol(y) != length(miss)) {
     stop(
       "the number of columns of the marker matrix is not equal to the length ",
       "of the missing value variable"
     )
+  }
   y_c <- y[, miss == FALSE, drop = FALSE]
   y_nc <- y[, miss == TRUE, drop = FALSE]
 
@@ -446,21 +459,24 @@ robustseR <- function(y, x, cluster) {
   for (j in seq_len(n)) {
     yj <- y[, j]
     miss <- is.na(yj)
-    if (length(yj) != length(miss))
+    if (length(yj) != length(miss)) {
       stop(
         "the number of rows in the marker matrix is not equal to the ",
         "length of the missing variable"
       )
-    if (nrow(x) != length(miss))
+    }
+    if (nrow(x) != length(miss)) {
       stop(
         "the number of rows in the covariate matrix is not equal to the ",
         "length of the missing variable"
       )
-    if (length(cluster) != length(miss))
+    }
+    if (length(cluster) != length(miss)) {
       stop(
         "the cluster variable is not equal to the length of the missing ",
         "variable"
       )
+    }
     yj <- yj[!miss]
     xj <- x[!miss, , drop = FALSE]
     clusterj <- cluster[!miss]
@@ -492,9 +508,21 @@ robustseR <- function(y, x, cluster) {
 #' @return `sandwich.se` returns a vector of robust standard errors for the
 #'   covariates including the intercept.
 #'
+#' @examples
+#' ## Data
+#' y <- rnorm(5000)
+#' x <- rnorm(5000)
+#' cluster <- rep(1:1000, 5)
+#' c1 <- rbinom(5000, 1, 0.5)
+#' c2 <- rnorm(5000)
+#'
+#' ## Analyses
+#' model <- lm(y ~ x + c1 + c2)
+#' se <- sandwich.se(model = model, cluster = cluster)
+#'
 #' @author James R Staley <jrstaley95@gmail.com>
 #'
-#' @noRd
+#' @export
 #' @md
 sandwich.se <- function(model, cluster) {
 
@@ -505,7 +533,7 @@ sandwich.se <- function(model, cluster) {
   dfc <- (m / (m - 1)) * ((n - 1) / (n - k))
 
   # Calculate the uj's
-  uj  <- apply(estfun(model), 2, function(x) tapply(x, cluster, sum))
+  uj <- apply(estfun(model), 2, function(x) tapply(x, cluster, sum))
 
   # Use sandwich to get the covariance matrix
   vcov <- dfc * sandwich(model, meat = crossprod(uj) / n)

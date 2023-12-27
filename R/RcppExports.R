@@ -24,5 +24,5 @@
 #' @noRd
 #' @md
 robustseEigen <- function(es, xs, cs, xxs, covs) {
-    .Call("_lmrse_robustseEigen", PACKAGE = "lmrse", es, xs, cs, xxs, covs)
+  .Call("_lmrse_robustseEigen", PACKAGE = "lmrse", es, xs, cs, xxs, covs)
 }
