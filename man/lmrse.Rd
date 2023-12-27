@@ -31,7 +31,7 @@ List of coefficients, SE and p-values matrices
 standard errors for all markers.
 }
 \examples{
-## Data
+# Data
 y <- rnorm(5000000)
 y <- matrix(y, ncol = 1000)
 colnames(y) <- paste0("var", 1:1000)
@@ -40,7 +40,7 @@ cluster <- rep(1:1000, 5)
 c1 <- rbinom(5000, 1, 0.5)
 c2 <- rnorm(5000)
 
-## Analyses
+# Analyses
 res <- lmrse(y ~ x + c1 + c2, cluster = cluster)
 
 }

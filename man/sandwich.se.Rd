@@ -20,14 +20,14 @@ covariates including the intercept.
 sandwich estimator.
 }
 \examples{
-## Data
+# Data
 y <- rnorm(5000)
 x <- rnorm(5000)
 cluster <- rep(1:1000, 5)
 c1 <- rbinom(5000, 1, 0.5)
 c2 <- rnorm(5000)
 
-## Analyses
+# Analyses
 model <- lm(y ~ x + c1 + c2)
 se <- sandwich.se(model = model, cluster = cluster)
 

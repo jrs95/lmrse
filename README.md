@@ -14,10 +14,10 @@ remotes::install_github("jrs95/lmrse")
 
 ## Example
 ```
-## Libraries
+# Libraries
 library(lmrse)
 
-## Data  
+# Data  
 y <- rnorm(5000000)
 y <- matrix(y, ncol = 1000) # a matrix of phenotypes (rows = individuals, columns = markers)
 colnames(y) <- paste0("pheno", 1:1000)
@@ -26,7 +26,7 @@ cluster <- rep(1:1000, 5) # cluster variable
 c1 <- rbinom(5000, 1, 0.5) # covariate 1
 c2 <- rnorm(5000) # covariate 2
 
-## Analyses  
+# Analyses  
 res <- lmrse(y ~ x + c1 + c2, cluster = cluster)
 summary(res)
 results <- coerce.lmrse(res)

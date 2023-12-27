@@ -32,7 +32,7 @@
 #' @return \item{p}{a matrix of p-values}
 #'
 #' @examples
-#' ## Data
+#' # Data
 #' y <- rnorm(5000000)
 #' y <- matrix(y, ncol = 1000)
 #' colnames(y) <- paste0("var", 1:1000)
@@ -41,7 +41,7 @@
 #' c1 <- rbinom(5000, 1, 0.5)
 #' c2 <- rnorm(5000)
 #'
-#' ## Analyses
+#' # Analyses
 #' res <- lmrse(y ~ x + c1 + c2, cluster = cluster)
 #'
 #' @author James R Staley <jrstaley95@gmail.com>
@@ -307,7 +307,7 @@ coerce.lmrse <- function(x) {
 #'   and the columns are the covariates including the intercept.
 #'
 #' @examples
-#' ## Data
+#' # Data
 #' y <- rnorm(5000000)
 #' y <- matrix(y, ncol = 1000)
 #' colnames(y) <- paste0("var", 1:1000)
@@ -317,7 +317,7 @@ coerce.lmrse <- function(x) {
 #' X <- cbind(1, x, covar)
 #' colnames(X) <- c("intercept", "X", "covar1", "covar2")
 #'
-#' ## Analyses
+#' # Analyses
 #' beta <- t((solve(crossprod(X)) %*% t(X)) %*% y)
 #' se <- robustse(y = y, x = X, cluster = cluster)
 #'
@@ -509,14 +509,14 @@ robustseR <- function(y, x, cluster) {
 #'   covariates including the intercept.
 #'
 #' @examples
-#' ## Data
+#' # Data
 #' y <- rnorm(5000)
 #' x <- rnorm(5000)
 #' cluster <- rep(1:1000, 5)
 #' c1 <- rbinom(5000, 1, 0.5)
 #' c2 <- rnorm(5000)
 #'
-#' ## Analyses
+#' # Analyses
 #' model <- lm(y ~ x + c1 + c2)
 #' se <- sandwich.se(model = model, cluster = cluster)
 #'
