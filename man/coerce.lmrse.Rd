@@ -7,7 +7,7 @@
 coerce.lmrse(x)
 }
 \arguments{
-\item{x}{an object of class "lmrse"}
+\item{x}{an object of class \code{"lmrse"}}
 }
 \description{
 coerce method for class \code{"lmrse"}, where

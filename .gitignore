@@ -1,4 +1,5 @@
 .lintr
+.pylintrc
 /src/*.so
 /src/*.o
 docs

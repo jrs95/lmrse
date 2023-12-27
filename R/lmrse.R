@@ -258,7 +258,7 @@ print.summary.lmrse <- function(x, ...) {
 #'
 #' @name coerce.lmrse
 #'
-#' @param x an object of class "lmrse"
+#' @param x an object of class `"lmrse"`
 #'
 #' @author James R Staley <jrstaley95@gmail.com>
 #'
