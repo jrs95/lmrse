@@ -1,6 +1,6 @@
 bibentry(
   bibtype = "Article",
-  header = "To cite lmrse in publications please use:",
+  header = "To cite `lmrse` in publications please use:",
   author = c(
     person("J.R.", "Staley"),
     person("M.", "Suderman"),
@@ -10,8 +10,8 @@ bibentry(
     person("C.L.", "Relton"),
     person("K.", "Tilling")
   ),
-  title = "{Longitudinal analysis strategies for modelling epigenetic trajectories}",
-  year = "2018",
+  title = "Longitudinal analysis strategies for modelling epigenetic trajectories",
+  year = 2018,
   key = "lmrse",
   doi = "10.1093/ije/dyy012",
   journal = "International Journal of Epidemiology",
