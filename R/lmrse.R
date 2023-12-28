@@ -3,8 +3,6 @@
 #' @description `lmrse` fits a linear regression model with cluster robust
 #'   standard errors for all markers.
 #'
-#' @docType package
-#'
 #' @name lmrse
 #'
 #' @import sandwich
@@ -20,7 +18,7 @@
 #'
 #' @param cluster clustering variable
 #'
-#' @param data an optional data.frame which contains the covariates specified
+#' @param data an optional `data.frame` which contains the covariates specified
 #'   in the formula
 #'
 #' @return List of coefficients, SE and p-values matrices
@@ -44,7 +42,7 @@
 #' # Analyses
 #' res <- lmrse(y ~ x + c1 + c2, cluster = cluster)
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @export
 #' @md
@@ -183,7 +181,7 @@ lmrse <- function(formula, cluster, data = NULL) {
 #'
 #' @param x an object of class `"lmrse"`
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @export
 #' @md
@@ -207,7 +205,7 @@ print.lmrse <- function(x, ...) {
 #'
 #' @param x an object of class `"lmrse"`
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @export
 #' @md
@@ -225,7 +223,7 @@ summary.lmrse <- function(x, ...) {
 #'
 #' @param x an object of class `"lmrse"`
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @export
 #' @md
@@ -260,7 +258,7 @@ print.summary.lmrse <- function(x, ...) {
 #'
 #' @param x an object of class `"lmrse"`
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @export
 #' @md
@@ -321,7 +319,7 @@ coerce.lmrse <- function(x) {
 #' beta <- t((solve(crossprod(X)) %*% t(X)) %*% y)
 #' se <- robustse(y = y, x = X, cluster = cluster)
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @noRd
 #' @md
@@ -392,7 +390,7 @@ robustse <- function(y, x, cluster) {
 #'   where the rows are the CpGs and the columns are the covariates
 #'   including the intercept.
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @noRd
 #' @md
@@ -447,7 +445,7 @@ robustseCpp <- function(y, x, cluster) {
 #'   where the rows are the CpGs and the columns are the covariates
 #'   including the intercept.
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @noRd
 #' @md
@@ -520,7 +518,7 @@ robustseR <- function(y, x, cluster) {
 #' model <- lm(y ~ x + c1 + c2)
 #' se <- sandwich.se(model = model, cluster = cluster)
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @export
 #' @md

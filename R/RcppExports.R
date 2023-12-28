@@ -2,6 +2,7 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 #' @title robustseEigen
+#'
 #' @description `robustseEigen` fits cluster robust standard errors
 #'   with C++Eigen across markers.
 #'
@@ -19,7 +20,7 @@
 #'   where the rows are the CpGs and the columns are the covariates
 #'   including the intercept.
 #'
-#' @author James R Staley <jrstaley95@gmail.com>
+#' @author James Staley <jrstaley95@gmail.com>
 #'
 #' @noRd
 #' @md
