@@ -33,5 +33,5 @@ se <- sandwich.se(model = model, cluster = cluster)
 
 }
 \author{
-James R Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
+James Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
 }

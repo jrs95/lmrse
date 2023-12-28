@@ -13,5 +13,5 @@
 print.summary method for class \code{"lmrse"}.
 }
 \author{
-James R Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
+James Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}
 }
