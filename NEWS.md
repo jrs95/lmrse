@@ -1,3 +1,7 @@
+# lmrse 0.0.4
+
+* update manuals  
+
 # lmrse 0.0.3
 
 * update R code using `styler`  
