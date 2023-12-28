@@ -21,7 +21,7 @@
 #' @param data an optional `data.frame` which contains the covariates specified
 #'   in the formula
 #'
-#' @return List of coefficients, SE and p-values matrices
+#' @return List of coefficients, SE and p-values matrices:
 #'
 #' @return \item{coef}{a matrix of regression coefficients}
 #'
