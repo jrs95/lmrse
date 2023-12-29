@@ -13,7 +13,7 @@ sandwich.se(model, cluster)
 }
 \value{
 \code{sandwich.se} returns a vector of robust standard errors for the
-covariates including the intercept.
+covariables including the intercept.
 }
 \description{
 \code{sandwich.se} fits cluster robust standard errors using a

@@ -9,10 +9,16 @@ coerce.lmrse(x)
 \arguments{
 \item{x}{an object of class \code{"lmrse"}}
 }
+\value{
+\code{coerce.lmrse} returns a results \code{data.frame} with
+coefficients, standard errors and p-values for the
+covariables.
+}
 \description{
-coerce method for class \code{"lmrse"}, where
-coefficients, standard errors and p-values are
-consecutive columns for each covariable in the model.
+\code{coerce.lmrse} constructs a results \code{data.frame}
+from an \code{"lmrse"} object, where coefficients, standard
+errors and p-values for each covariable are placed in
+consecutive columns.
 }
 \author{
 James Staley \href{mailto:jrstaley95@gmail.com}{jrstaley95@gmail.com}

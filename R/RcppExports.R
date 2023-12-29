@@ -8,7 +8,7 @@
 #'
 #' @param es a matrix of residuals
 #'
-#' @param xs a matrix of covariates
+#' @param xs a matrix of covariables
 #'
 #' @param cs a vector of clusters
 #'
@@ -17,7 +17,7 @@
 #' @param covs an empty variance-covariance matrix
 #'
 #' @return `robustseEigen` returns a matrix of robust standard errors
-#'   where the rows are the CpGs and the columns are the covariates
+#'   where the rows are the markers and the columns are the covariables
 #'   including the intercept.
 #'
 #' @author James Staley <jrstaley95@gmail.com>

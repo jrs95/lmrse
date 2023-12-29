@@ -21,7 +21,8 @@
 #' @param data an optional `data.frame` which contains the covariates specified
 #'   in the formula
 #'
-#' @return List of coefficients, SE and p-values matrices:
+#' @return `lmrse` returns a `list` of coefficients, standard errors and
+#'   p-values matrices:
 #'
 #' @return \item{coef}{a matrix of regression coefficients}
 #'
@@ -250,13 +251,18 @@ print.summary.lmrse <- function(x, ...) {
 
 #' @title Combine lmrse object into a results data.frame
 #'
-#' @description coerce method for class `"lmrse"`, where
-#'   coefficients, standard errors and p-values are
-#'   consecutive columns for each covariable in the model.
+#' @description `coerce.lmrse` constructs a results `data.frame`
+#'   from an `"lmrse"` object, where coefficients, standard
+#'   errors and p-values for each covariable are placed in
+#'   consecutive columns.
 #'
 #' @name coerce.lmrse
 #'
 #' @param x an object of class `"lmrse"`
+#'
+#' @return `coerce.lmrse` returns a results `data.frame` with
+#'   coefficients, standard errors and p-values for the
+#'   covariables.
 #'
 #' @author James Staley <jrstaley95@gmail.com>
 #'
@@ -296,13 +302,13 @@ coerce.lmrse <- function(x) {
 #'
 #' @param y matrix of markers
 #'
-#' @param x matrix of other covariates (including intercept)
+#' @param x matrix of covariables (including intercept)
 #'
 #' @param cluster clustering variable
 #'
 #' @return `robustse` returns a matrix of robust standard errors where
 #'   the rows are the markers (e.g. CpG sites of DNA methylation)
-#'   and the columns are the covariates including the intercept.
+#'   and the columns are the covariables including the intercept.
 #'
 #' @examples
 #' # Data
@@ -382,12 +388,12 @@ robustse <- function(y, x, cluster) {
 #'
 #' @param y matrix of markers
 #'
-#' @param x matrix of other covariates (including intercept)
+#' @param x matrix of covariables (including intercept)
 #'
 #' @param cluster clustering variable
 #'
 #' @return `robustseCpp` returns a matrix of robust standard errors
-#'   where the rows are the CpGs and the columns are the covariates
+#'   where the rows are the markers and the columns are the covariables
 #'   including the intercept.
 #'
 #' @author James Staley <jrstaley95@gmail.com>
@@ -437,12 +443,12 @@ robustseCpp <- function(y, x, cluster) {
 #'
 #' @param y matrix of markers
 #'
-#' @param x matrix of other covariates (including intercept)
+#' @param x matrix of covariables (including intercept)
 #'
 #' @param cluster clustering variable
 #'
 #' @return `robustseR` returns a matrix of robust standard errors
-#'   where the rows are the CpGs and the columns are the covariates
+#'   where the rows are the markers and the columns are the covariables
 #'   including the intercept.
 #'
 #' @author James Staley <jrstaley95@gmail.com>
@@ -504,7 +510,7 @@ robustseR <- function(y, x, cluster) {
 #' @param cluster clustering variable
 #'
 #' @return `sandwich.se` returns a vector of robust standard errors for the
-#'   covariates including the intercept.
+#'   covariables including the intercept.
 #'
 #' @examples
 #' # Data

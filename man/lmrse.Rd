@@ -17,7 +17,8 @@ and covariates as the dependent terms}
 in the formula}
 }
 \value{
-List of coefficients, SE and p-values matrices:
+\code{lmrse} returns a \code{list} of coefficients, standard errors and
+p-values matrices:
 
 \item{coef}{a matrix of regression coefficients}
 
