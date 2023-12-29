@@ -60,7 +60,7 @@ lmrse <- function(formula, cluster, data = NULL) {
   names_y <- colnames(y)
   names_x <- colnames(x)
 
-  # Error messages
+  # Errors
   if (class(y)[1] != "matrix" || ncol(y) < 2) {
     stop("the outcome should be a marker matrix with at least two columns")
   }
@@ -101,7 +101,7 @@ lmrse <- function(formula, cluster, data = NULL) {
   x <- x[!rm, , drop = FALSE]
   cluster <- cluster[!rm]
 
-  # Error messages
+  # Errors
   if (nrow(y) != nrow(x)) {
     stop(
       "the number of rows in the marker matrix is not equal to the number of ",

@@ -1,6 +1,6 @@
 Package: lmrse
 Title: Linear regression with clustered robust standard errors
-Version: 0.0.5
+Version: 0.0.6
 Date: 29-12-2023
 Authors@R: c(
     person(
