@@ -1,3 +1,7 @@
+# lmrse 0.0.6
+
+* update lmrse  
+
 # lmrse 0.0.5
 
 * update manuals  
