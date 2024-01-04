@@ -1,28 +1,28 @@
 # lmrse 0.0.7
 
-* update description  
+* Update description  
 
 # lmrse 0.0.6
 
-* update lmrse  
+* Update lmrse  
 
 # lmrse 0.0.5
 
-* update manuals  
+* Update manuals  
 
 # lmrse 0.0.4
 
-* update manuals  
+* Update manuals  
 
 # lmrse 0.0.3
 
-* update R code using `styler`  
-* add `sandwich.se` function  
+* Update R code using `styler`  
+* Add `sandwich.se` function  
 
 # lmrse 0.0.2
 
-* add `pkgdown` website  
+* Add `pkgdown` website  
 
 # lmrse 0.0.1
 
-* initial version of the R package  
+* Initial version of the R package  
