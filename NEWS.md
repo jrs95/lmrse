@@ -1,3 +1,7 @@
+# lmrse 0.0.7
+
+* update description  
+
 # lmrse 0.0.6
 
 * update lmrse  

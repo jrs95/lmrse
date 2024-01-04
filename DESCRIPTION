@@ -1,7 +1,7 @@
 Package: lmrse
 Title: Linear regression with clustered robust standard errors
-Version: 0.0.6
-Date: 29-12-2023
+Version: 0.0.7
+Date: 04-01-2023
 Authors@R: c(
     person(
         given = "James",
@@ -18,11 +18,11 @@ URL: https://jrs95.github.io/lmrse/, https://github.com/jrs95/lmrse
 BugReports: https://github.com/jrs95/lmrse/issues
 Depends:
     R (>= 3.4.0)
-Imports: 
+Imports:
     Rcpp,
     RcppEigen,
     sandwich
-LinkingTo: 
+LinkingTo:
     Rcpp,
     RcppEigen
 Encoding: UTF-8
